@@ -1,0 +1,159 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# Poetry
+poetry.lock
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+# MLflow
+mlruns/
+mlartifacts/
+mlflow.db
+mlflow.db-shm
+mlflow.db-wal
+
+# Données
+*.csv
+*.xlsx
+*.xls
+data/
+datasets/
+*.db
+*.sqlite
+*.sqlite3
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.code-workspace
+
+# OS
+Thumbs.db
+.DS_Store
+*.bak
+*.tmp
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Logs
+logs/
+*.log
+*.out
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Secrets & Credentials
+secrets/
+*.key
+*.pem
+credentials.json
+service-account.json
+
+# Build artifacts
+*.whl
+*.tar.gz
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Large files
+*.h5
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.onnx
+
+# Notebooks output
+*.nbconvert.ipynb
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# Models (si trop gros)
+# models/
+# *.model
