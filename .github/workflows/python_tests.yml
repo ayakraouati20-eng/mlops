@@ -6,9 +6,6 @@ on:
       - main
       - master
   pull_request:
-    branches:
-      - main
-      - master
 
 jobs:
   test:
@@ -23,29 +20,16 @@ jobs:
       with:
         python-version: '3.11'
     
-    - name: Install Poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
-    
-    - name: Configure Poetry
-      run: |
-        poetry config virtualenvs.create false
-    
     - name: Install dependencies
       run: |
-        poetry install --no-root
-    
-    - name: Verify pytest installation
-      run: |
-        poetry run which pytest || echo "pytest not found"
-        poetry show pytest
+        pip install --upgrade pip
+        pip install -r requirements.txt
     
     - name: Run API Tests
       run: |
-        poetry run pytest tests/test_api.py -v
+        pytest tests/test_api.py -v
     
     - name: Generate Coverage Report
       run: |
-        poetry run pytest tests/test_api.py --cov=api --cov-report=xml --cov-report=term
+        pytest tests/test_api.py --cov=api --cov-report=term
       continue-on-error: true
