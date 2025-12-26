@@ -1,4 +1,4 @@
-name: Docker Build and Push
+name: Docker Build and Test
 
 on:
   push:
@@ -28,22 +28,45 @@ jobs:
         curl -sSL https://install.python-poetry.org | python3 -
         echo "$HOME/.local/bin" >> $GITHUB_PATH
     
+    - name: Configure Poetry
+      run: |
+        poetry config virtualenvs.create false
+    
     - name: Install dependencies
       run: |
-        poetry install --with dev --no-root
+        poetry install --no-root
     
     - name: Run Tests
       run: |
         poetry run pytest tests/test_api.py -v
     
+    - name: Generate requirements.txt
+      run: |
+        poetry export -f requirements.txt --output requirements.txt --without-hashes
+    
     - name: Build Docker images
       run: |
         docker-compose build
     
-    - name: Test Docker containers
+    - name: Start Docker containers
       run: |
         docker-compose up -d
-        echo "Waiting for API to be ready..."
-        sleep 10
+    
+    - name: Wait for API to be ready
+      run: |
+        echo "Waiting for API..."
+        sleep 15
+    
+    - name: Test API endpoint
+      run: |
         curl -f http://localhost:8000/ || exit 1
+    
+    - name: Show logs on failure
+      if: failure()
+      run: |
+        docker-compose logs
+    
+    - name: Stop containers
+      if: always()
+      run: |
         docker-compose down
