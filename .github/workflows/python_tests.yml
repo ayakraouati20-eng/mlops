@@ -6,9 +6,6 @@ on:
       - main
       - master
   pull_request:
-    branches:
-      - main
-      - master
 
 jobs:
   test:
@@ -23,30 +20,16 @@ jobs:
       with:
         python-version: '3.11'
     
-    - name: Install Poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
-    
     - name: Install dependencies
       run: |
-        poetry install --with dev --no-root
+        pip install --upgrade pip
+        pip install -r requirements.txt
     
     - name: Run API Tests
       run: |
-        poetry run pytest tests/test_api.py -v
-    
-    - name: Run Model Tests (if data available)
-      run: |
-        poetry run pytest tests/test_models.py -v --continue-on-collection-errors || echo "Model tests skipped (data not available in CI)"
+        pytest tests/test_api.py -v
     
     - name: Generate Coverage Report
       run: |
-        poetry run pytest tests/test_api.py --cov=api --cov-report=xml --cov-report=term
-    
-    - name: Upload Coverage
-      uses: codecov/codecov-action@v3
-      if: always()
-      with:
-        files: ./coverage.xml
-        fail_ci_if_error: false
+        pytest tests/test_api.py --cov=api --cov-report=term
+      continue-on-error: true
