@@ -1,0 +1,22 @@
+artifact_path: file:///c:/Users/w197947/House_pred/mlops/notebooks/mlruns/4/models/m-f5924cf1bbb547d1bad94364dd88ad28/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+mlflow_version: 3.8.0
+model_id: m-f5924cf1bbb547d1bad94364dd88ad28
+model_size_bytes: 724
+model_uuid: m-f5924cf1bbb547d1bad94364dd88ad28
+prompts: null
+run_id: 6d6d0c52f364430d81479ba2f1e57861
+utc_time_created: '2025-12-25 21:33:17.802049'

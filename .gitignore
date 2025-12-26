@@ -63,13 +63,6 @@ cover/
 profile_default/
 ipython_config.py
 
-# MLflow
-mlruns/
-mlartifacts/
-mlflow.db
-mlflow.db-shm
-mlflow.db-wal
-
 # Données
 *.csv
 *.xlsx
